@@ -1,15 +1,16 @@
 ---
 name: paper-search
-description: >-
-  Search, download, and read academic papers from 20+ open sources (arXiv, PubMed,
+description: 'Search, download, and read academic papers from 20+ open sources (arXiv, PubMed,
   bioRxiv, medRxiv, Semantic Scholar, Crossref, OpenAlex, PMC, Europe PMC, CORE,
-  IACR, dblp, DOAJ, Zenodo, HAL, Unpaywall, and more) via the `paper-search` CLI.
+  IACR, dblp, DOAJ, Zenodo, HAL, Unpaywall, and more) via the paper-search CLI.
   Use when asked to find papers, search research/academic literature, look up a
   DOI/PMID/arXiv ID, download a paper PDF, or extract the full text of a paper.
   Triggers on "find papers on X", "search arxiv/pubmed for ...", "download this
-  paper", "get me the PDF/full text", or any scholarly literature query.
+  paper", "get me the PDF/full text", or any scholarly literature query.'
 license: MIT
-allowed-tools: Bash Read
+allowed-tools:
+  - Bash
+  - Read
 compatibility: >-
   Requires the `paper-search` CLI (install via `uv tool install paper-search-mcp`,
   Python 3.10+) and network access. No credentials needed to start; optional keys
@@ -48,9 +49,18 @@ If it errors with `command not found`, install it:
 
 ```bash
 uv tool install paper-search-mcp                      # preferred (isolated tool)
-curl -LsSf https://astral.sh/uv/install.sh | sh       # only if uv itself is missing
 pip install paper-search-mcp                          # fallback; then invoke as:
 python3 -m paper_search_mcp.cli <command> ...         #   module form
+```
+
+If `uv` itself is missing, install it via your package manager (e.g. `pipx install uv`
+or `pip install uv`). If you must use the upstream installer script, download it first,
+review it, then run it — don't pipe it straight into a shell:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh -o /tmp/uv-install.sh   # download
+less /tmp/uv-install.sh                                            # review before running
+sh /tmp/uv-install.sh                                              # then execute
 ```
 
 Optional API keys are **not** required — add them only when a source rate-limits or is

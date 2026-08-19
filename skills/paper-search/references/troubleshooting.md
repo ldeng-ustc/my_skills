@@ -22,7 +22,7 @@ a key, not to retry blindly.
 
 | Symptom | Cause | Fix |
 |---------|-------|-----|
-| `command not found: paper-search` | Not installed or not on PATH | `uv tool install paper-search-mcp`; if `uv` missing, `curl -LsSf https://astral.sh/uv/install.sh \| sh` then retry. Or `pip install paper-search-mcp` and call `python3 -m paper_search_mcp.cli ...` |
+| `command not found: paper-search` | Not installed or not on PATH | `uv tool install paper-search-mcp`; if `uv` missing, install it (`pipx install uv` or `pip install uv`) — if you must use the upstream script, download it first (`curl -LsSf https://astral.sh/uv/install.sh -o /tmp/uv-install.sh`), review it, then `sh /tmp/uv-install.sh`; don't pipe curl into sh. Or `pip install paper-search-mcp` and call `python3 -m paper_search_mcp.cli ...` |
 | `realpath: command not found` (macOS, uvx) | uvx wrapper needs GNU coreutils | `brew install coreutils`, or use `uv tool install` / run from source instead |
 | Slow install behind a proxy | uv defaults to public PyPI over a throttled proxy | Point uv at a faster index: `uv tool install paper-search-mcp --default-index <url>` (uv ignores pip.conf; use `UV_DEFAULT_INDEX` or `~/.config/uv/uv.toml`) |
 | `{"error": "No valid sources selected"}` | Misspelled source name(s) | Use exact names from `paper-search sources`. Note `semantic` (not `semantic_scholar`), `google_scholar` (underscore), `europepmc`, `pmc` |
